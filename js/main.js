@@ -53,15 +53,10 @@ function getCookie(name) {
 
 // Show error message on the first visit
 $(document).ready(function () {
-    var hasVisitedBefore = getCookie('visitedBefore');
-    if (!hasVisitedBefore) {
-        $('#desktopModeMessage').fadeIn('slow');
-        // Set a cookie to remember the visit
-        setCookie('visitedBefore', true, 365);
-        setTimeout(function () {
-            $('#desktopModeMessage').fadeOut('slow');
-        }, 5000);
-    }
+    $('#desktopModeMessage').fadeIn('slow');
+    setTimeout(function () {
+        $('#desktopModeMessage').fadeOut('slow');
+    }, 5000);
 });
 
 

@@ -56,7 +56,7 @@ $(document).ready(function () {
     $('#desktopModeMessage').fadeIn('slow');
     setTimeout(function () {
         $('#desktopModeMessage').fadeOut('slow');
-    }, 5000);
+    }, 7000);
 });
 
 

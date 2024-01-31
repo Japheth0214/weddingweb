@@ -62,9 +62,6 @@ $(document).ready(function () {
 // Get the date and time for April 12, 2024, 04:00 PM PH Time (UTC+8)
 var countDownDate = new Date("April 12, 2024 16:00:00 GMT+0800").getTime();
 
-// Get the date and time for April 12, 2024, 04:00 PM PH Time (UTC+8)
-var countDownDate = new Date("April 12, 2024 16:00:00 GMT+0800").getTime();
-
 // Update the countdown every 1 second
 var countdownInterval = setInterval(function() {
     // Get the current date and time

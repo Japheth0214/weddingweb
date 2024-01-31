@@ -85,7 +85,7 @@ var countdownInterval = setInterval(function() {
         totalSeconds = (totalSeconds < 10) ? "0" + totalSeconds : totalSeconds;
 
         // Display the countdown
-        document.getElementById("countdown").innerHTML = totalMonths + " Months | " + totalDays + " Days | " + totalHours + " : " + totalMinutes + " : " + totalSeconds + "";
+        document.getElementById("countdown").innerHTML = totalMonths + " Mos | " + totalDays + " Days | " + totalHours + " : " + totalMinutes + " : " + totalSeconds + "";
     } else {
         // If the current date is after April 12, 2024, display a message
         document.getElementById("countdown").innerHTML = "Event has passed!";

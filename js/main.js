@@ -59,6 +59,47 @@ $(document).ready(function () {
     }, 7000);
 });
 
+// Get the date and time for April 12, 2024, 04:00 PM PH Time (UTC+8)
+var countDownDate = new Date("April 12, 2024 16:00:00 GMT+0800").getTime();
+
+// Get the date and time for April 12, 2024, 04:00 PM PH Time (UTC+8)
+var countDownDate = new Date("April 12, 2024 16:00:00 GMT+0800").getTime();
+
+// Update the countdown every 1 second
+var countdownInterval = setInterval(function() {
+    // Get the current date and time
+    var now = new Date().getTime();
+
+    // Check if the current date is before April 12, 2024
+    if (now < countDownDate) {
+        // Calculate the remaining time in milliseconds
+        var remainingTime = countDownDate - now;
+
+        // Calculate total months, days, hours, minutes, and seconds
+        var totalMonths = Math.floor(remainingTime / (1000 * 60 * 60 * 24 * 30));
+        var totalDays = Math.floor((remainingTime % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        var totalHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var totalMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+        var totalSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+        // Convert hours, minutes, and seconds to military time (24-hour format)
+        totalHours = (totalHours < 10) ? "0" + totalHours : totalHours;
+        totalMinutes = (totalMinutes < 10) ? "0" + totalMinutes : totalMinutes;
+        totalSeconds = (totalSeconds < 10) ? "0" + totalSeconds : totalSeconds;
+
+        // Display the countdown
+        document.getElementById("countdown").innerHTML = totalMonths + " Months | " + totalDays + " Days | " + totalHours + " : " + totalMinutes + " : " + totalSeconds + "";
+    } else {
+        // If the current date is after April 12, 2024, display a message
+        document.getElementById("countdown").innerHTML = "Event has passed!";
+    }
+
+    // If the countdown is over, clear the interval
+    if (now >= countDownDate) {
+        clearInterval(countdownInterval);
+    }
+}, 1000);
+
 
     // Modal Video
     $(document).ready(function () {

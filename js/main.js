@@ -1,31 +1,37 @@
 (function ($) {
     "use strict";
 
-    // Navbar on scrolling
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-            $('.navbar').fadeIn('slow').css('display', 'flex');
-        } else {
-            $('.navbar').fadeOut('slow').css('display', 'none');
-        }
-    });
+   // Navbar on scrolling
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 200) {
+        $('.navbar').fadeIn('slow').css('display', 'flex');
+    } else {
+        $('.navbar').fadeOut('slow').css('display', 'none');
+    }
+});
 
+// Smooth scrolling on the navbar links
+$(".navbar-nav a").on('click', function (event) {
+    if (this.hash !== "") {
+        event.preventDefault();
 
-    // Smooth scrolling on the navbar links
-    $(".navbar-nav a").on('click', function (event) {
-        if (this.hash !== "") {
-            event.preventDefault();
-            
-            $('html, body').animate({
-                scrollTop: $(this.hash).offset().top - 45
-            }, 1500, 'easeInOutExpo');
-            
-            if ($(this).parents('.navbar-nav').length) {
-                $('.navbar-nav .active').removeClass('active');
-                $(this).closest('a').addClass('active');
-            }
+        $('html, body').animate({
+            scrollTop: $(this.hash).offset().top - 45
+        }, 1500, 'easeInOutExpo');
+
+        if ($(this).parents('.navbar-nav').length) {
+            $('.navbar-nav .active').removeClass('active');
+            $(this).closest('a').addClass('active');
         }
-    });
+
+        // Collapse the navbar after clicking on a navigation item
+        var navbarCollapse = $('#navbarCollapse');
+        if (navbarCollapse.hasClass('show')) {
+            navbarCollapse.removeClass('show');
+        }
+    }
+});
+
 
 
     // Function to set a cookie
@@ -51,13 +57,7 @@ function getCookie(name) {
     return null;
 }
 
-// Show error message on the first visit
-$(document).ready(function () {
-    $('#desktopModeMessage').fadeIn('slow');
-    setTimeout(function () {
-        $('#desktopModeMessage').fadeOut('slow');
-    }, 7000);
-});
+
 
 // Get the date and time for April 12, 2024, 04:00 PM PH Time (UTC+8)
 var countDownDate = new Date("April 12, 2024 16:00:00 GMT+0800").getTime();

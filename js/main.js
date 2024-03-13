@@ -72,24 +72,30 @@ var countdownInterval = setInterval(function() {
         // Calculate the remaining time in milliseconds
         var remainingTime = countDownDate - now;
 
-        // Calculate total months, days, hours, minutes, and seconds
-        var totalMonths = Math.floor(remainingTime / (1000 * 60 * 60 * 24 * 30));
-        var totalDays = Math.floor((remainingTime % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        // Calculate total days, hours, minutes, and seconds
+        var totalDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
         var totalHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var totalMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
         var totalSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-        // Convert hours, minutes, and seconds to military time (24-hour format)
+        // Convert hours, minutes, and seconds to two-digit format
         totalHours = (totalHours < 10) ? "0" + totalHours : totalHours;
         totalMinutes = (totalMinutes < 10) ? "0" + totalMinutes : totalMinutes;
         totalSeconds = (totalSeconds < 10) ? "0" + totalSeconds : totalSeconds;
 
         // Display the countdown
-        document.getElementById("countdown").innerHTML = totalMonths + " Mos | " + totalDays + " Days | " + totalHours + " : " + totalMinutes + " : " + totalSeconds + "";
+        if (totalDays > 1) {
+            document.getElementById("countdown").innerHTML = totalDays + " Days | " + totalHours + " : " + totalMinutes + " : " + totalSeconds;
+        } else if (totalDays === 1) {
+            document.getElementById("countdown").innerHTML = totalHours + " : " + totalMinutes + " : " + totalSeconds;
+        } else {
+            document.getElementById("countdown").innerHTML = totalHours + " : " + totalMinutes + " : " +  totalSeconds;
+        }
     } else {
         // If the current date is after April 12, 2024, display a message
         document.getElementById("countdown").innerHTML = "Event has passed!";
     }
+
 
     // If the countdown is over, clear the interval
     if (now >= countDownDate) {

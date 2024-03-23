@@ -68,6 +68,14 @@ body {
   outline: 0 !important;
 }
 
+.disabled-li {
+  pointer-events: none;
+}
+
+.unclickable-li {
+  pointer-events: none;
+}
+
 hr {
   box-sizing: content-box;
   height: 0;

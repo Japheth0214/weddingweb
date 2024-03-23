@@ -68,6 +68,7 @@ body {
   outline: 0 !important;
 }
 
+
 .disabled-li {
   pointer-events: none;
 }
@@ -9546,6 +9547,11 @@ a.text-dark:hover, a.text-dark:focus {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
+}
+
+.section-title1 {
+  margin-bottom: 30px;
+  margin-top: -50px;
 }
 
 .section-title {

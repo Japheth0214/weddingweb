@@ -3,7 +3,7 @@
 $primary: #E47A2E;
 $secondary: #EDF5F7;
 $light: #FFFFFF;
-$dark: #bc7e3b;
+$dark: #121F38;
 
 $font-family-sans-serif: 'Montserrat', sans-serif;
 
@@ -27,10 +27,6 @@ $border-width: 2px;
 
 
 /********** Template CSS ************/
-.position-relative-center {
-    padding: 20px;
-}
-
 .font-secondary {
     font-family: 'Great Vibes', cursive;
 }
@@ -265,7 +261,7 @@ $border-width: 2px;
         margin-left: -1px;
         background: $primary;
     }
-    
+
     .timeline .row::before {
         content: "";
         position: absolute;
@@ -278,7 +274,7 @@ $border-width: 2px;
         transform: rotate(45deg);
         z-index: 1;
     }
-    
+
     .timeline .row::after {
         content: "\f004";
         font-family: "Font Awesome 5 Free";

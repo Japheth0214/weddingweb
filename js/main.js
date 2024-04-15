@@ -1,107 +1,31 @@
 (function ($) {
     "use strict";
 
-   // Navbar on scrolling
-$(window).scroll(function () {
-    if ($(this).scrollTop() > 200) {
-        $('.navbar').fadeIn('slow').css('display', 'flex');
-    } else {
-        $('.navbar').fadeOut('slow').css('display', 'none');
-    }
-});
-
-// Smooth scrolling on the navbar links
-$(".navbar-nav a").on('click', function (event) {
-    if (this.hash !== "") {
-        event.preventDefault();
-
-        $('html, body').animate({
-            scrollTop: $(this.hash).offset().top - 45
-        }, 1500, 'easeInOutExpo');
-
-        if ($(this).parents('.navbar-nav').length) {
-            $('.navbar-nav .active').removeClass('active');
-            $(this).closest('a').addClass('active');
-        }
-
-        // Collapse the navbar after clicking on a navigation item
-        var navbarCollapse = $('#navbarCollapse');
-        if (navbarCollapse.hasClass('show')) {
-            navbarCollapse.removeClass('show');
-        }
-    }
-});
-
-
-
-    // Function to set a cookie
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-// Function to get a cookie value by name
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-
-
-// Get the date and time for April 12, 2024, 04:00 PM PH Time (UTC+8)
-var countDownDate = new Date("April 12, 2024 16:00:00 GMT+0800").getTime();
-
-// Update the countdown every 1 second
-var countdownInterval = setInterval(function() {
-    // Get the current date and time
-    var now = new Date().getTime();
-
-    // Check if the current date is before April 12, 2024
-    if (now < countDownDate) {
-        // Calculate the remaining time in milliseconds
-        var remainingTime = countDownDate - now;
-
-        // Calculate total days, hours, minutes, and seconds
-        var totalDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-        var totalHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var totalMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-        var totalSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-
-        // Convert hours, minutes, and seconds to two-digit format
-        totalHours = (totalHours < 10) ? "0" + totalHours : totalHours;
-        totalMinutes = (totalMinutes < 10) ? "0" + totalMinutes : totalMinutes;
-        totalSeconds = (totalSeconds < 10) ? "0" + totalSeconds : totalSeconds;
-
-        // Display the countdown
-        if (totalDays > 1) {
-            document.getElementById("countdown").innerHTML = totalDays + " Days | " + totalHours + " : " + totalMinutes + " : " + totalSeconds;
-        } else if (totalDays === 1) {
-            document.getElementById("countdown").innerHTML = totalHours + " : " + totalMinutes + " : " + totalSeconds;
+    // Navbar on scrolling
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 200) {
+            $('.navbar').fadeIn('slow').css('display', 'flex');
         } else {
-            document.getElementById("countdown").innerHTML = totalHours + " : " + totalMinutes + " : " +  totalSeconds;
+            $('.navbar').fadeOut('slow').css('display', 'none');
         }
-    } else {
-        // If the current date is after April 12, 2024, display a message
-        document.getElementById("countdown").innerHTML = "Event has passed!";
-    }
+    });
 
 
-    // If the countdown is over, clear the interval
-    if (now >= countDownDate) {
-        clearInterval(countdownInterval);
-    }
-}, 1000);
+    // Smooth scrolling on the navbar links
+    $(".navbar-nav a").on('click', function (event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+            
+            $('html, body').animate({
+                scrollTop: $(this.hash).offset().top - 45
+            }, 1500, 'easeInOutExpo');
+            
+            if ($(this).parents('.navbar-nav').length) {
+                $('.navbar-nav .active').removeClass('active');
+                $(this).closest('a').addClass('active');
+            }
+        }
+    });
 
 
     // Modal Video
@@ -159,36 +83,35 @@ var countdownInterval = setInterval(function() {
     });
 
 
-   $(".gallery-carousel").owlCarousel({
-    autoplay: true, // Enable automatic sliding
-    autoplayTimeout: 3000, // Set the timeout in milliseconds (e.g., 5000ms for 5 seconds)
-    autoplayHoverPause: true, // Pause on hover
-    smartSpeed: 1500,
-    dots: false,
-    loop: true,
-    nav: true,
-    navText: [
-        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-    ],
-    responsive: {
-        0: {
-            items: 1
-        },
-        576: {
-            items: 2
-        },
-        768: {
-            items: 3
-        },
-        992: {
-            items: 4
-        },
-        1200: {
-            items: 5
+    // Gallery carousel
+    $(".gallery-carousel").owlCarousel({
+        autoplay: false,
+        smartSpeed: 1500,
+        dots: false,
+        loop: true,
+        nav : true,
+        navText : [
+            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+            '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+        ],
+        responsive: {
+            0:{
+                items:1
+            },
+            576:{
+                items:2
+            },
+            768:{
+                items:3
+            },
+            992:{
+                items:4
+            },
+            1200:{
+                items:5
+            }
         }
-    }
-});
-
+    });
+    
 })(jQuery);
 

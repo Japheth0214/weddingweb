@@ -28,22 +28,24 @@
     });
 
 
-    // Modal Video
-    $(document).ready(function () {
-        var $videoSrc;
-        $('.btn-play').click(function () {
-            $videoSrc = $(this).data("src");
-        });
-        console.log($videoSrc);
+$(document).ready(function () {
+    var $videoSrc;
 
-        $('#videoModal').on('shown.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-        })
-
-        $('#videoModal').on('hide.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc);
-        })
+    $('.btn-play').click(function () {
+        $videoSrc = $(this).data("src");
     });
+
+    $('#videoModal').on('shown.bs.modal', function (e) {
+        $("#video").attr('src', $videoSrc);
+    });
+
+    $('#videoModal').on('hidden.bs.modal', function (e) {
+        var video = document.getElementById('video');
+        video.pause(); // Pause the video when modal is hidden
+        $("#video").attr('src', ''); // Clear the video source
+    });
+});
+
 
 
     // Scroll to Bottom
@@ -83,34 +85,28 @@
     });
 
 
-    // Gallery carousel
-    $(".gallery-carousel").owlCarousel({
-        autoplay: false,
-        smartSpeed: 1500,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-            '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:2
-            },
-            768:{
-                items:3
-            },
-            992:{
-                items:4
-            },
-            1200:{
-                items:5
+  // Gallery carousel
+    $(document).ready(function(){
+        $('.gallery-carousel').owlCarousel({
+            loop: true,
+            nav: true,
+            navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'], // Customize navigation button icons
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
             }
-        }
+        });
     });
     
 })(jQuery);

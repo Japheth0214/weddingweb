@@ -10318,6 +10318,20 @@ button.bg-dark:focus {
   text-align: center !important;
 }
 
+.text-smallcase {
+  display: none;
+  white-space: nowrap;
+  position: absolute;
+  transform: translate(-50%, -50%);
+      /* Center the paragraph horizontally and vertically within the button */
+  /* Hide the paragraph by default */
+}
+
+.btn-play:hover .text-smallcase {
+  display: inline-block;
+  /* Show the paragraph when hovering over the button */
+}
+
 @media (min-width: 576px) {
   .text-sm-left {
     text-align: left !important;
